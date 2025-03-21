@@ -180,3 +180,13 @@ function rollage_art(img, num_slices = 22){
 
     render_to_main_canvas(new_image_2)
 }
+
+function download_image(){
+    console.log("mengunduh gambar")
+    let canvas = document.getElementById('canvas')
+    let link = document.createElement('a')
+
+    link.download = 'rollage_art.png'
+    link.href = canvas.toDataURL('image/png')
+    link.click()
+}
