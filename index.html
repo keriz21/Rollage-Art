@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rollage Art</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        canvas {
+            max-width: 100%;
+            margin-top: 10px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h1>Rollage Art Generator</h1>
+    <input type="file" id="upload" accept="image/*">
+
+    <br><br>
+    <canvas id="canvas"></canvas>
+    <br>
+    <button onclick="flip_horizontal()">Generate Rollage Art</button>
+    <br><br>
+    <p>Value: <span id="sliderValue">22</span></p>
+    <br>
+    <input type="range" name="slice" id="slicesSlider" min="10" max="50">
+    <br>
+    <script src="script/script.js">
+        
+    </script>
+</body>
+</html>

@@ -63,22 +63,13 @@ def rollage_art(img_path, num_slices = 22):
 
     hasil_flip = flip_vertical(flip_horizontal(img))
     hasil_w = slice_and_rotate(hasil_flip, num_slices=slice_width)
-    hasil_h = slice_and_rotate(hasil_w, num_slices=slice_height)
+    # hasil_h = slice_and_rotate(hasil_w, num_slices=slice_height)
 
-    cv2.imwrite("hasil_v1.2.jpg",hasil_h)
+    cv2.imwrite("hasil_v1.2.jpg",hasil_w)
 
     print("hello world")
 
     pass
 
-# img_path = "WIN_20250101_00_37_06_Pro.jpg"
-# img = cv2.imread(img_path)
-# hasil = flip_vertical(flip_horizontal(img))
-# hasil2 = slice_and_rotate(hasil)
-# hasil3 = slice_and_rotate(hasil2)
-
-
-# cv2.imwrite("hasil_v7.jpg", hasil3)
-
 if __name__ == "__main__":
-    rollage_art("WIN_20250101_00_37_06_Pro.jpg")
+    rollage_art("public/gusdur_square.jpg")
