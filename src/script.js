@@ -190,3 +190,49 @@ function download_image(){
     link.href = canvas.toDataURL('image/png')
     link.click()
 }
+
+const dropZone = document.getElementById("dropZone");
+const fileInput = document.getElementById("upload");
+const uploadBtn = document.getElementById("uploadBtn");
+
+// Handle click on button
+uploadBtn.addEventListener("click", () => fileInput.click());
+
+// Handle file selection
+fileInput.addEventListener("change", (event) => handleFile(event.target.files[0]));
+
+// Drag & Drop events
+dropZone.addEventListener("dragover", (event) => {
+    event.preventDefault();
+    dropZone.classList.add("border-blue-500");
+});
+
+dropZone.addEventListener("dragleave", () => {
+    dropZone.classList.remove("border-blue-500");
+});
+
+dropZone.addEventListener("drop", (event) => {
+    event.preventDefault();
+    dropZone.classList.remove("border-blue-500");
+    if (event.dataTransfer.files.length > 0) {
+        handleFile(event.dataTransfer.files[0]);
+    }
+});
+
+function handleFile(file) {
+    if (!file || !file.type.startsWith("image/")) return;
+    
+    const reader = new FileReader();
+    reader.onload = (event) => {
+        const img = new Image();
+        img.onload = () => {
+            const canvas = document.getElementById("canvas");
+            const ctx = canvas.getContext("2d");
+            canvas.width = img.width;
+            canvas.height = img.height;
+            ctx.drawImage(img, 0, 0);
+        };
+        img.src = event.target.result;
+    };
+    reader.readAsDataURL(file);
+}

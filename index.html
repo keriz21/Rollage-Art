@@ -4,32 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rollage Art</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-        }
-        canvas {
-            max-width: 100%;
-            margin-top: 10px;
-            border: 1px solid black;
-        }
-    </style>
+    <link rel="stylesheet" href="src/output.css">
 </head>
 <body>
-    <h1>Rollage Art Generator</h1>
-    <input type="file" id="upload" accept="image/*">
 
-    <br><br>
-    <canvas id="canvas"></canvas>
-    <br>
-    <button onclick="download_image()">Download Image</button>
-    <br><br>
-    <p>Value: <span id="sliderValue">22</span></p>
-    <br>
-    <input type="range" name="slice" id="slicesSlider" min="10" max="50">
-    <br>
-    <script src="script/script.js">
+    <body class="flex justify-center items-center h-screen bg-gray-100 h-full">
+        <div class="flex w-full max-w-4xl bg-white shadow-lg rounded-lg overflow-hidden md:flex-row flex-col items-center">
+            <!-- Left Section -->
+            <div class="w-1/2 flex flex-col items-center justify-center p-6">
+                <div class="hidden md:block">
+                    <img src="public/THUMBNAIL.png" alt="Sample Image" class="w-full max-w-xs object-cover rounded-lg mb-4">
+                </div>
+                <h1 class="text-3xl font-bold text-blue-500 text-center">Rollage Art Generator</h1>
+                <p class="text-gray-600 text-center">Transform your photos into unique art</p>
+            </div>
+            
+            <!-- Right Section -->
+            <div class="w-1/2 flex flex-col items-center justify-center p-6 md:border-l">
+                <h2 class="text-xl font-semibold mb-4">Upload Your Image</h2>
+            
+                <!-- Drag & Drop Area -->
+                <div id="dropZone" class="w-full border-2 border-dashed border-gray-400 rounded-lg p-6 text-center cursor-pointer hover:border-blue-500 transition">
+                    <p class="text-gray-600">Drag & Drop your image here</p>
+                    <input type="file" id="upload" accept="image/*" class="hidden">
+                    <button id="uploadBtn" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">
+                        Select File
+                    </button>
+                </div>
+            
+                <canvas id="canvas" class="border rounded-lg w-full mt-4"></canvas>
+                <button onclick="download_image()" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">
+                    Download Image
+                </button>
+                
+                <p class="mt-4">Value: <span id="sliderValue">22</span></p>
+                <input type="range" name="slice" id="slicesSlider" min="10" max="50" class="w-full mt-2">
+            </div>
+        </div>
+    </body>
+    <script src="src/script.js">
         
     </script>
 </body>
