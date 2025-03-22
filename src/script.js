@@ -256,8 +256,12 @@ function remove_image_view() {
 
 function add_drop_zone(){
     document.getElementById("dropZone").classList.remove("hidden")
+    document.getElementById("thumbnail").classList.remove("hidden")
+    document.getElementById("thumbnail").classList.remove("md:block")
 }
 
 function remove_drop_zone() {
     document.getElementById("dropZone").classList.add("hidden")
+    document.getElementById("thumbnail").classList.add("hidden")
+    document.getElementById("thumbnail").classList.add("md:block")
 }
