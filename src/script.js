@@ -2,17 +2,17 @@ let imgElement = new Image();
 let canvas = document.getElementById('canvas');
 let ctx = canvas.getContext('2d');
 
-document.getElementById('upload').addEventListener('change', (event) => {
-    let file = event.target.files[0];
-    if (file) {
-        let reader = new FileReader();
-        reader.onload = function(e) {
-            imgElement.src = e.target.result;
-        };
-        reader.readAsDataURL(file);
-        // applyEffects()
-    }
-});
+// document.getElementById('upload').addEventListener('change', (event) => {
+//     let file = event.target.files[0];
+//     if (file) {
+//         let reader = new FileReader();
+//         reader.onload = function(e) {
+//             imgElement.src = e.target.result;
+//         };
+//         reader.readAsDataURL(file);
+//         // applyEffects()
+//     }
+// });
 
 document.getElementById('slicesSlider').addEventListener('input', (event) => {
     let value = event.target.value
@@ -224,15 +224,40 @@ function handleFile(file) {
     
     const reader = new FileReader();
     reader.onload = (event) => {
-        const img = new Image();
-        img.onload = () => {
-            const canvas = document.getElementById("canvas");
-            const ctx = canvas.getContext("2d");
-            canvas.width = img.width;
-            canvas.height = img.height;
-            ctx.drawImage(img, 0, 0);
+        imgElement.onload = () => {
+            rollage_art(imgElement)
+            add_image_view()
+            remove_drop_zone()
         };
-        img.src = event.target.result;
+        imgElement.src = event.target.result;
     };
     reader.readAsDataURL(file);
+}
+
+function is_canvas_empty (canvas) {
+    const ctx = canvas.getContext("2d")
+    const imgData =  ctx.getImageData(0,0,canvas.width, canvas.height).data;
+
+    return !imgData.some(channel => channel !== 0)
+}
+
+function cek_canvas () {
+    remove_image_view()
+    add_drop_zone()
+}
+
+function add_image_view() {
+    document.getElementById("image-view").classList.remove("hidden");
+}
+
+function remove_image_view() {
+    document.getElementById("image-view").classList.add("hidden")
+}
+
+function add_drop_zone(){
+    document.getElementById("dropZone").classList.remove("hidden")
+}
+
+function remove_drop_zone() {
+    document.getElementById("dropZone").classList.add("hidden")
 }
