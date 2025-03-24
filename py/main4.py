@@ -58,16 +58,16 @@ def rollage_art(img_path, num_slices = 22):
 
     slice_width, slice_height = get_square_slices(img, num_slices)
 
-    print("slice w: ",slice_width)
-    print("slice h: ",slice_height)
+    # print("slice w: ",slice_width)
+    # print("slice h: ",slice_height)
 
     hasil_flip = flip_vertical(flip_horizontal(img))
     hasil_w = slice_and_rotate(hasil_flip, num_slices=slice_width)
-    # hasil_h = slice_and_rotate(hasil_w, num_slices=slice_height)
+    hasil_h = slice_and_rotate(hasil_w, num_slices=slice_height)
 
-    cv2.imwrite("hasil_v1.2.jpg",hasil_w)
+    cv2.imwrite("hasil/hasil_v1.2.jpg",hasil_h)
 
-    print("hello world")
+    print("Gambar Berhasil dibuat")
 
     pass
 
